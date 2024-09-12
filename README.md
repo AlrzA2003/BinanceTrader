@@ -18,7 +18,7 @@ BinanceTrader is a Python class that utilizes Deep Neural Networks (DNN) for mak
 ## Features
 
 - Leverages Deep Neural Networks for price predictions
-- Supports both demo (testnet) and real trading environments
+- Supports both demo (testnet) and real trading environments (mainnet)
 - Automated trading with customizable parameters
 - Real-time data fetching and preprocessing
 - Integration with Binance API
@@ -56,10 +56,9 @@ pip install -r requirements_specific.txt
 Note: While pre-trained models are provided, it's recommended to train your own for the most up-to-date data.
 
 2. Configuration:
-- Open `BinanceTrader.py` and locate the configuration section near the end of the file.
-- Replace `api_key` and `secret_key` with your Binance API credentials. [How to get Binance API keys](https://support.coinigy.com/hc/en-us/articles/360001144614-How-do-I-find-my-API-key-on-Binance-com-)
-- Set `testnet` to `True` if you want to use Binance Testnet for demo trading.
-- Update `model_path` and `scaler_path` with the correct paths to your model and scaler files. [How to find file paths on Windows](https://www.wikihow.com/Find-a-File%27s-Path-on-Windows)
+- Open `credentials.txt` and replace `API_KEY` and `SECRET` with your Binance API credentials. [How to get Binance API keys](https://support.coinigy.com/hc/en-us/articles/360001144614-How-do-I-find-my-API-key-on-Binance-com-)
+- In `BinanceTrader.py` set `testnet` to `True` if you want to use Binance Testnet for demo trading.
+- Update `model_path` and `scaler_path` with the correct paths to your model and scaler files.
 
 ## Usage
 
