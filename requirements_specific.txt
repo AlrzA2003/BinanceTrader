@@ -1,0 +1,10 @@
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.1
+joblib==1.4.2
+tensorflow==2.17.0
+python-binance==1.0.19
+ccxt==4.2.36
+schedule==1.2.2
+pytz==2024.1
+stock-indicators==1.3.1

@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+joblib
+tensorflow
+python-binance
+ccxt
+schedule
+pytz
+stock-indicators
