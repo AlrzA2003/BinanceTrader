@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# Hello there! 😊
+# This script is designed to help you gather data and train your model effectively.
+# If you have alternative methods for training your model, feel free to use them and overwrite the
+# "model.keras" and "scaler.joblib" files to ensure the commands run correctly.
 
 import pandas as pd
 import numpy as np
@@ -14,10 +13,10 @@ from sklearn.preprocessing import MinMaxScaler
 from joblib import dump
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.layers import Dense, Dropout, Input
 
 # the LINKUSDT_15m.csv file Is 15m candles of LINK/USDT currency pair and it has Date, Open, High, Low, Close columns
-data = pd.read_csv("LINKUSDT_15m.csv", parse_dates = ["Date"], index_col = "Date")
+data = pd.read_csv("LINKUSDT_15m.csv", parse_dates = ["Date"], index_col = "Date") # Change the name of 
 ind = Indicators(data)
 ind.all_ind()
 pca = ind.add_pca(1)
@@ -61,7 +60,8 @@ X = scaler.transform(X)
 early_stop = EarlyStopping(monitor = "loss", mode = "min", verbose = 1, patience = 25)
 
 model = Sequential()
-model.add(Dense(52, input_dim = 51, activation = "relu"))
+model.add(Input(shape=(51,)))
+model.add(Dense(52, activation = "relu"))
 model.add(Dropout(0.2))
 model.add(Dense(26, activation = "relu"))
 model.add(Dropout(0.2))
@@ -70,5 +70,5 @@ model.add(Dropout(0.2))
 model.add(Dense(1, activation = 'sigmoid'))
 model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 model.fit(x = X, y = y, epochs = 100, callbacks = [early_stop], batch_size = 16)
-model.save("model.h5")
-
+model.save("model.keras") # Specify the name HERE. (default: model.keras)
+# Notice: The model will be loaded in "BinanceTrader.py" file.
