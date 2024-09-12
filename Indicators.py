@@ -1,3 +1,8 @@
+# Welcome! In this file, we add some features to our dataset to train our model.
+# This file contains functions for various indicators, which are imported into the "Preprocessing.py" file.
+# Feel free to add or remove indicators as needed to suit your project.
+
+
 import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -8,7 +13,7 @@ class Indicators:
         self._df = df
         self.data = df
     def __repr__(self):
-        return "Class : Indicators  |  Contains several indicators for Neural Network Processing!"
+        return "Class : Indicators  |  Contains several indicators (as features) to train our  Neural Network Model!"
     
     # First 10 Indicators !!!  ---------------------------------------------
     
