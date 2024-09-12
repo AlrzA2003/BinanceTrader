@@ -1,3 +1,11 @@
+# Hi there! 🤗
+# In this section, we integrate the ZigZag Indicator into our dataset.
+# This will be imported into the "Preprocessing.py" file.
+# Subsequently, we will train a DNN model using the ZigZag Indicator along with various other indicators found in "Indicators.py".
+# Enjoy the process and have FUN!
+
+
+
 import pandas as pd
 pd.options.display.float_format = '{:.3f}'.format
 from decimal import Decimal
@@ -79,7 +87,6 @@ class ZigZagResult(ResultBase):
     @retrace_low.setter
     def retrace_low(self, value):
         self._csdata.RetraceLow = CsDecimal(value)
-
 
 _T = TypeVar("_T", bound=ZigZagResult)
 class ZigZagResults(IndicatorResults[_T]):
