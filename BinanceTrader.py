@@ -1,3 +1,12 @@
+# Welcome to the BinanceTrader Class! 🚀
+# This powerful tool is designed to facilitate algorithmic trading on Binance.
+# It handles everything from API connections and data fetching to model predictions
+# and trade execution. 
+
+# If you have any questions or encounter any issues, please don't hesitate to contact me-
+# -on TG: https://t.me/AlrzA_2003. Thank you!
+
+
 import ccxt
 import pandas as pd
 import numpy as np
@@ -12,6 +21,7 @@ from tensorflow.keras.models import load_model
 from stock_indicators.indicators.common.enums import EndType
 from stock_indicators.indicators.common.quote import Quote
 from Labels import get_zig_zag
+import Downloads as dls # Optional, Import this package just to avoid rewriting the API_key, Secret, timeframe and trading_pair
 
 class BinanceTrader:
     """
@@ -345,18 +355,18 @@ class BinanceTrader:
             sleep(10)
             
             
-symbol = "LINK/USDT" # The currency pair you want to trade ---------> "BaseCurrency/QuoteCurrency"
-api_key = "........." # The API key you got from Binance
-secret_key = "..........." # The Secret key you got from Binance
-testnet = False
-model_path = "---" # The path of saved model in your local computer or server
-scaler_path = "---" # The path of saved scaler in your local computer or server
-bar_length = "15m" # timeframe
+symbol = dls.trading_pair.replace("USDT", "/USDT") # The currency pair you want to trade ---------> "BaseCurrency/QuoteCurrency"
+api_key = dls.api_key # The API key you got from Binance
+secret = dls.secret # The Secret key you got from Binance
+testnet = False # Set it to True if you are working with binance testnet
+model_path = "model.keras" # The path of saved model in your local computer or server
+scaler_path = "scaler.joblib" # The path of saved scaler in your local computer or server
+bar_length = dls.timeframe # timeframe
 limit = 500 # Number of candles you need (based on how many NaN values you have)
 leverage = 2 # Desired leverage
 
 
-trader = BinanceTrader(symbol, api_key, secret_key, testnet, model_path, scaler_path, bar_length, limit, leverage)
+trader = BinanceTrader(symbol, api_key, secret, testnet, model_path, scaler_path, bar_length, limit, leverage)
 print(trader)
 thread = Thread(target = trader.refreshing_data)
 thread.start()
